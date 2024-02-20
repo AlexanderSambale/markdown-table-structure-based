@@ -61,11 +61,30 @@ suite('Extension Test Suite', () => {
 		strictEqual(formatTable(input), expected);
 	});
 
-	test('Remove whitespaces for tests', () => {
+	test('Remove whitespaces for tests, first and last newline', () => {
 		const input = `
 		test
 		`;
 		const expected = 'test';
 		strictEqual(clean(input), expected);
 	});
+
+	test('Remove whitespaces for tests, trim start for every newline', () => {
+		const input = `
+		Arbeitszeit
+		12 Min.
+		
+		Fertig in
+		12 Min.
+		
+		Kalorien
+		53
+		
+		Level
+		Einfach
+		`;
+		const expected = 'Arbeitszeit\n12 Min.\n\nFertig in\n12 Min.\n\nKalorien\n53\n\nLevel\nEinfach';
+		strictEqual(clean(input), expected);
+	});
+
 });
