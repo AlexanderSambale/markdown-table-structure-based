@@ -22,9 +22,9 @@ suite('Extension Test Suite', () => {
 		Einfach
 		`);
 		const expected = clean(`
-		|Arbeitszeit |Fertig in |Kalorien|Level|
-		| :-- | :-- | :-- | :-- |
-		|12 Min. |12 Min. |53|Einfach
+		| Arbeitszeit | Fertig in | Kalorien | Level   |
+		|:------------|:----------|:---------|:--------|
+		| 12 Min.     | 12 Min.   | 53       | Einfach |
 		`);
 		strictEqual(create(input, 4), expected);
 	});
