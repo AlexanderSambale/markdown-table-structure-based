@@ -71,7 +71,7 @@ suite('Extension Test Suite', () => {
 		strictEqual(formatTable(input), expected);
 	});
 
-	test('Remove whitespaces for tests, first and last newline', () => {
+	test('Remove white spaces for tests, first and last newline', () => {
 		const input = `
 		test
 		`;
@@ -79,7 +79,7 @@ suite('Extension Test Suite', () => {
 		strictEqual(clean(input), expected);
 	});
 
-	test('Remove whitespaces for tests, trim start for every newline', () => {
+	test('Remove white spaces for tests, trim start for every newline', () => {
 		const input = `
 		Arbeitszeit
 		12 Min.

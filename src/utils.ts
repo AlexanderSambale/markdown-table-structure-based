@@ -6,7 +6,7 @@ export function create(input: string, columns: number): string {
   return table; 
 }
 
-// Remove whitespaces for tests
+// Remove white spaces for tests
 export function clean(input: string): string {
   let removed = '';
   removed = input
