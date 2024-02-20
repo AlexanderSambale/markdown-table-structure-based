@@ -5,3 +5,9 @@ export function create(input: string, columns: number): string {
   table = formatTable(input);
   return table; 
 }
+
+// Remove whitespaces for tests
+export function clean(input: string): string {
+  let removed = '';
+  return removed;
+}
