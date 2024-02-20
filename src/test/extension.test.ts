@@ -7,7 +7,7 @@ import { formatTable } from '../utils_extern';
 // import * as myExtension from '../../extension';
 
 suite('Extension Test Suite', () => {
-	test('Create table with 4 columns', () => {
+	test('Create table where columns are already structured by newline with 4 columns', () => {
 		const input = clean(`
 		Arbeitszeit
 		12 Min.
@@ -29,7 +29,7 @@ suite('Extension Test Suite', () => {
 		strictEqual(create(input, 4), expected);
 	});
 
-	test('Create table with 2 columns', () => {
+	test('Create table where each cell is on a newline with 2 columns', () => {
 		const input = clean(`
 		Zutaten
 		Menge
@@ -41,11 +41,11 @@ suite('Extension Test Suite', () => {
 		1 Prise/n / 1 g
 		`);
 		const expected = clean(`
-		|Zutaten| Menge|
-		| :-- | :-- |
-		|Haferflocken| 2 Esslöffel / 15 g|
-		|Wasser|0.4 Liter / 400 g|
-		|Salz|1 Prise/n / 1 g|
+		| Zutaten      | Menge              |
+		|:-------------|:-------------------|
+		| Haferflocken | 2 Esslöffel / 15 g |
+		| Wasser       | 0.4 Liter / 400 g  |
+		| Salz         | 1 Prise/n / 1 g    |
 		`);
 		strictEqual(create(input, 2), expected);
 	});
