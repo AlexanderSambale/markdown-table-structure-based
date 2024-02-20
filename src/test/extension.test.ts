@@ -67,5 +67,5 @@ suite('Extension Test Suite', () => {
 		`;
 		const expected = 'test';
 		strictEqual(clean(input), expected);
-	})
+	});
 });
