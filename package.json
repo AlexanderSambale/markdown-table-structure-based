@@ -9,13 +9,20 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage:markdown",
+    "onLanguage:mdx",
+    "onLanguage:rmd",
+    "onLanguage:quarto"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "markdown-table-structure-based.helloWorld",
-        "title": "Hello World"
+        "command": "markdown-table-structure-based.create",
+        "enablement": "editorLangId =~ /^markdown$|^rmd$|^quarto$|^mdx$/",
+        "title": "create table",
+        "category": "Markdown"
       }
     ]
   },
