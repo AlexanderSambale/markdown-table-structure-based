@@ -4,6 +4,7 @@ import { strictEqual } from 'assert';
 // as well as import your extension to test it
 import { window } from 'vscode';
 import { create } from '../utils';
+import { formatTable } from '../utils_extern';
 // import * as myExtension from '../../extension';
 
 suite('Extension Test Suite', () => {
