@@ -23,7 +23,7 @@ suite('Extension Test Suite', () => {
 		Einfach`;
 		const expected = `|Arbeitszeit |Fertig in |Kalorien|Level|
 		| :-- | :-- | :-- | :-- |
-		|12 Min. |12 Min. |53|Einfach`
+		|12 Min. |12 Min. |53|Einfach`;
 		assert.strictEqual(create(input, 4), expected);
 	});
 
@@ -40,7 +40,7 @@ suite('Extension Test Suite', () => {
 		| :-- | :-- |
 		|Haferflocken| 2 Esslöffel / 15 g|
 		|Wasser|0.4 Liter / 400 g|
-		|Salz|1 Prise/n / 1 g|`
+		|Salz|1 Prise/n / 1 g|`;
 		assert.strictEqual(create(input, 2), expected);
 	});
 });
