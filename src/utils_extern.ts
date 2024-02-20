@@ -1,4 +1,5 @@
 // This file uses code from <https://github.com/yzhang-gh/vscode-markdown/>
+// Especially functions from https://github.com/yzhang-gh/vscode-markdown/blob/d2862ca363656c244ff587e6ce17e875e02457ed/src/tableFormatter.ts
 // Only small adjustments were done
 
 import { FormattingOptions, EndOfLine } from "vscode";
