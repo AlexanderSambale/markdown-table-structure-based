@@ -43,4 +43,20 @@ suite('Extension Test Suite', () => {
 		|Salz|1 Prise/n / 1 g|`;
 		strictEqual(create(input, 2), expected);
 	});
+
+	test('Format table with 2 columns', () => {
+		const input = `|Zutaten| Menge|
+		| :-- | :-- |
+		|Haferflocken| 2 Esslöffel / 15 g|
+		|Wasser|0.4 Liter / 400 g|
+		|Salz|1 Prise/n / 1 g|`;
+		const expected = `
+		| Zutaten      | Menge              |
+		|:-------------|:-------------------|
+		| Haferflocken | 2 Esslöffel / 15 g |
+		| Wasser       | 0.4 Liter / 400 g  |
+		| Salz         | 1 Prise/n / 1 g    |
+		`;
+		strictEqual(formatTable(input), expected);
+	});
 });
