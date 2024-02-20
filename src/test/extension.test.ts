@@ -60,4 +60,12 @@ suite('Extension Test Suite', () => {
 		`;
 		strictEqual(formatTable(input), expected);
 	});
+
+	test('Remove whitespaces for tests', () => {
+		const input = `
+		test
+		`;
+		const expected = 'test';
+		strictEqual(clean(input), expected);
+	})
 });
