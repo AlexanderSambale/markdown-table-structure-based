@@ -11,7 +11,8 @@ suite('Extension Test Suite', () => {
 	window.showInformationMessage('Start all tests.');
 
 	test('Create table with 4 columns', () => {
-		const input = `Arbeitszeit
+		const input = clean(`
+		Arbeitszeit
 		12 Min.
 		
 		Fertig in
@@ -21,43 +22,52 @@ suite('Extension Test Suite', () => {
 		53
 		
 		Level
-		Einfach`;
-		const expected = `|Arbeitszeit |Fertig in |Kalorien|Level|
+		Einfach
+		`);
+		const expected = clean(`
+		|Arbeitszeit |Fertig in |Kalorien|Level|
 		| :-- | :-- | :-- | :-- |
-		|12 Min. |12 Min. |53|Einfach`;
+		|12 Min. |12 Min. |53|Einfach
+		`);
 		strictEqual(create(input, 4), expected);
 	});
 
 	test('Create table with 2 columns', () => {
-		const input = `Zutaten
+		const input = clean(`
+		Zutaten
 		Menge
 		Haferflocken
 		2 Esslöffel / 15 g
 		Wasser
 		0.4 Liter / 400 g
 		Salz
-		1 Prise/n / 1 g`;
-		const expected = `|Zutaten| Menge|
+		1 Prise/n / 1 g
+		`);
+		const expected = clean(`
+		|Zutaten| Menge|
 		| :-- | :-- |
 		|Haferflocken| 2 Esslöffel / 15 g|
 		|Wasser|0.4 Liter / 400 g|
-		|Salz|1 Prise/n / 1 g|`;
+		|Salz|1 Prise/n / 1 g|
+		`);
 		strictEqual(create(input, 2), expected);
 	});
 
 	test('Format table with 2 columns', () => {
-		const input = `|Zutaten| Menge|
+		const input = clean(`
+		|Zutaten| Menge|
 		| :-- | :-- |
 		|Haferflocken| 2 Esslöffel / 15 g|
 		|Wasser|0.4 Liter / 400 g|
-		|Salz|1 Prise/n / 1 g|`;
-		const expected = `
+		|Salz|1 Prise/n / 1 g|
+		`);
+		const expected = clean(`
 		| Zutaten      | Menge              |
 		|:-------------|:-------------------|
 		| Haferflocken | 2 Esslöffel / 15 g |
 		| Wasser       | 0.4 Liter / 400 g  |
 		| Salz         | 1 Prise/n / 1 g    |
-		`;
+		`);
 		strictEqual(formatTable(input), expected);
 	});
 
