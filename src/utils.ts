@@ -97,3 +97,7 @@ function numberOfMatches(input: string,
   const matches = input.matchAll(matcher);
   return [...matches].length ;
 }
+
+export function concatReverse(tablesInput: string): string {
+  return tablesInput;
+}
