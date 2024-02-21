@@ -9,7 +9,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	let create = vscode.commands.registerCommand('markdown-table-structure-based.create', createTable);
 
-	let concat = vscode.commands.registerCommand('markdown-table-structure-based.concat', (...args) => {
+	let concat = vscode.commands.registerCommand('markdown-table-structure-based.concat', concatNormal);
 	});
 
 	context.subscriptions.push(create, concat);
@@ -52,5 +52,26 @@ async function createTable() {
 
 	editor.edit((editBuilder) => {
 		editBuilder.replace(selection, create(selectedText, numberOfColumns));
+	});
+}
+
+function concatNormal() {
+	const editor = vscode.window.activeTextEditor;
+	if (!editor) {
+		vscode.window.showErrorMessage('No active text editor.');
+		return;
+	}
+
+	const selection = editor.selection;
+	const selectedText = editor.document.getText(selection);
+
+	// Check if there's a selection
+	if (selection.isEmpty) {
+		vscode.window.showInformationMessage('Please select text to replace.');
+		return;
+	} 
+
+	editor.edit((editBuilder) => {
+		editBuilder.replace(selection, concat(selectedText));
 	});
 }

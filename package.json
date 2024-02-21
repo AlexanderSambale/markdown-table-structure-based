@@ -24,6 +24,12 @@
         "enablement": "editorLangId =~ /^markdown$|^rmd$|^quarto$|^mdx$/",
         "title": "create table",
         "category": "Markdown"
+      },
+      {
+        "command": "markdown-table-structure-based.concat",
+        "enablement": "editorLangId =~ /^markdown$|^rmd$|^quarto$|^mdx$/",
+        "title": "concatenate tables",
+        "category": "Markdown"
       }
     ]
   },
