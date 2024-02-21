@@ -54,11 +54,11 @@ export function clean(input: string): string {
 /**
  * concatenates markdown tables
  * adds columns of the other tables to the first
- * @param table 
+ * @param tablesInput 
  * @returns 
  */
-export function concat(table: string): string {
-  const tables = table
+export function concat(tablesInput: string): string {
+  const tables = tablesInput
     .trim()
     .split(multipleNewLines);
   const numberOfTables = tables.length;
