@@ -58,7 +58,26 @@ export function clean(input: string): string {
  * @returns 
  */
 export function concat(table: string): string {
-  const tables = [];
-  let mergedTable = '';
+  const tables = table
+    .trim()
+    .split(multipleNewLines);
+  const numberOfTables = tables.length;
+  let maxRowNumber = 0;
+  let cells: string[][] = []; // first table, then row
+  for(let tableIndex = 0; tableIndex < numberOfTables; tableIndex++){
+    cells.push(tables[tableIndex].split(EOL));
+    maxRowNumber = Math.max(maxRowNumber, cells[tableIndex].length); 
+  }
+  let rows: string[] = [];
+  let row: string;
+  for(let rowIndex = 0; rowIndex < maxRowNumber; rowIndex++) {
+    row = '';
+    for(let columnIndex = 0; columnIndex < numberOfTables; columnIndex++){
+      row = row + cells[columnIndex][rowIndex].replace(/\|$/, '');
+    }
+    rows.push(row + '|');
+  }
+  let mergedTable = rows.join(EOL);
+  //mergedTable = formatTable(mergedTable);
   return mergedTable;
 }
