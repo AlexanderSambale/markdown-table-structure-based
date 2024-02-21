@@ -61,6 +61,17 @@ export function concat(tablesInput: string): string {
   const tables = tablesInput
     .trim()
     .split(multipleNewLines);
+  return concatenate(tables);
+}
+
+/**
+ * concatenates markdown tables
+ * adds columns of the other tables to the first
+ * @param tablesInput 
+ * @returns 
+ */
+export function concatenate(tables: string[]): string {
+
   const numberOfTables = tables.length;
   let maxRowNumber = 0;
   let cells: string[][] = []; // first table, then row
@@ -99,5 +110,9 @@ function numberOfMatches(input: string,
 }
 
 export function concatReverse(tablesInput: string): string {
-  return tablesInput;
+  const tables = tablesInput
+  .trim()
+  .split(multipleNewLines)
+  .reverse();
+  return concatenate(tables);
 }
