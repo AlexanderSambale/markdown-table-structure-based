@@ -2,6 +2,7 @@
   "name": "markdown-table-structure-based",
   "displayName": "Markdown Table structure based",
   "description": "Copying tables to have them in markdown sometimes requires a lot of manual interaction. This extensions is to automate some of the cases.",
+  "license": "MIT",
   "version": "0.1.0",
   "engines": {
     "vscode": "^1.86.0"
