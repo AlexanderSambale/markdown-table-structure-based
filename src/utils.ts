@@ -1,9 +1,11 @@
 import { formatTable } from "./vscode-markdown/utils_extern";
 
+const multipleNewLines = /\n\n+/;
+const EOL = '\n';
+
 export function create(input: string, columnsNumber: number): string {
   let table = '';
   table = input.trim();
-  const multipleNewLines = /\n\n+/;
   const columns = table.split(multipleNewLines);
   let headerRow = '';
   for(let index = 0; index < columnsNumber; index++) {
@@ -12,13 +14,13 @@ export function create(input: string, columnsNumber: number): string {
   let rows: string[] = [];
   if(columns.length === columnsNumber) {
     // columns are already structured by newline
-    for(let index = 0; index < columns[0].split(/\n/).length; index++) {
+    for(let index = 0; index < columns[0].split(EOL).length; index++) {
       rows.push('');
     }
-    columns.forEach(column => column.split(/\n/).forEach((rowCell, index) => rows[index] = rows[index] + "|" + rowCell));
+    columns.forEach(column => column.split(EOL).forEach((rowCell, index) => rows[index] = rows[index] + "|" + rowCell));
   } else if (columns.length === 1){
     // each cell is on a newline, ordered by first row, second and so on
-    const cells = table.split('\n');
+    const cells = table.split(EOL);
     let row: string;
     for(let rowIndex = 0; rowIndex*columnsNumber < cells.length; rowIndex++) {
       row = '';
@@ -33,7 +35,7 @@ export function create(input: string, columnsNumber: number): string {
     }
   }
   rows.splice(1, 0, headerRow);
-  table = rows.join('\n');
+  table = rows.join(EOL);
   table = formatTable(table);
   return table; 
 }
@@ -43,9 +45,9 @@ export function clean(input: string): string {
   let removed = '';
   removed = input
     .trim()
-    .split('\n')
+    .split(EOL)
     .map((line) => line.trimStart())
-    .join('\n');
+    .join(EOL);
   return removed;
 }
 
