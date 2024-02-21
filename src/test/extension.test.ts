@@ -23,7 +23,7 @@ suite('Extension Test Suite', () => {
 		`);
 		const expected = clean(`
 		| Arbeitszeit | Fertig in | Kalorien | Level   |
-		|:------------|:----------|:---------|:--------|
+		| :---------- | :-------- | :------- | :------ |
 		| 12 Min.     | 12 Min.   | 53       | Einfach |
 		`);
 		strictEqual(create(input, 4), expected);
@@ -42,7 +42,7 @@ suite('Extension Test Suite', () => {
 		`);
 		const expected = clean(`
 		| Zutaten      | Menge              |
-		|:-------------|:-------------------|
+		| :----------- | :----------------- |
 		| Haferflocken | 2 Esslöffel / 15 g |
 		| Wasser       | 0.4 Liter / 400 g  |
 		| Salz         | 1 Prise/n / 1 g    |
@@ -60,7 +60,7 @@ suite('Extension Test Suite', () => {
 		`);
 		const expected = clean(`
 		| Zutaten      | Menge              |
-		|:-------------|:-------------------|
+		| :----------- | :----------------- |
 		| Haferflocken | 2 Esslöffel / 15 g |
 		| Wasser       | 0.4 Liter / 400 g  |
 		| Salz         | 1 Prise/n / 1 g    |
