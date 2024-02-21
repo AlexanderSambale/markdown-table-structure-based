@@ -48,3 +48,15 @@ export function clean(input: string): string {
     .join('\n');
   return removed;
 }
+
+/**
+ * concatenates markdown tables
+ * adds columns of the other tables to the first
+ * @param table 
+ * @returns 
+ */
+export function concat(table: string): string {
+  const tables = [];
+  let mergedTable = '';
+  return mergedTable;
+}
