@@ -1,4 +1,4 @@
-import { formatTable } from "./utils_extern";
+import { formatTable } from "./vscode-markdown/utils_extern";
 
 export function create(input: string, columnsNumber: number): string {
   let table = '';
