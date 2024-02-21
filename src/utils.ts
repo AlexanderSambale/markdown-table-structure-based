@@ -64,20 +64,36 @@ export function concat(table: string): string {
   const numberOfTables = tables.length;
   let maxRowNumber = 0;
   let cells: string[][] = []; // first table, then row
-  for(let tableIndex = 0; tableIndex < numberOfTables; tableIndex++){
-    cells.push(tables[tableIndex].split(EOL));
-    maxRowNumber = Math.max(maxRowNumber, cells[tableIndex].length); 
-  }
   let rows: string[] = [];
+  const numberOfColumns: number[] = []; 
+  for(let tableIndex = 0; tableIndex < numberOfTables; tableIndex++){
+    rows = tables[tableIndex].split(EOL);
+    maxRowNumber = Math.max(maxRowNumber, rows.length); 
+    numberOfColumns.push(numberOfMatches(rows[0], /\|/g)-1); // we assume | ... | ... |
+    cells.push(rows);
+  }
   let row: string;
+  rows = [];
   for(let rowIndex = 0; rowIndex < maxRowNumber; rowIndex++) {
     row = '';
-    for(let columnIndex = 0; columnIndex < numberOfTables; columnIndex++){
-      row = row + cells[columnIndex][rowIndex].replace(/\|$/, '');
+    for(let tableIndex = 0; tableIndex < numberOfTables; tableIndex++){
+      if(cells[tableIndex][rowIndex]) {
+        // table has rows to add 
+        row = row + cells[tableIndex][rowIndex].replace(/\|$/, '');
+      } else {
+        // table has no more rows, then fill with empty cells
+        row = row + '| '.repeat(numberOfColumns[tableIndex]);
+      }
     }
     rows.push(row + '|');
   }
   let mergedTable = rows.join(EOL);
   mergedTable = formatTable(mergedTable);
   return mergedTable;
+}
+
+function numberOfMatches(input: string,
+  matcher: RegExp): number {
+  const matches = input.matchAll(matcher);
+  return [...matches].length ;
 }
