@@ -78,6 +78,6 @@ export function concat(table: string): string {
     rows.push(row + '|');
   }
   let mergedTable = rows.join(EOL);
-  //mergedTable = formatTable(mergedTable);
+  mergedTable = formatTable(mergedTable);
   return mergedTable;
 }
