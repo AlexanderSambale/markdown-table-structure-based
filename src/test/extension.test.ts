@@ -109,11 +109,11 @@ suite('Extension Test Suite', () => {
 		| S   | 1   |		
 		`);
 		const expected = clean(`
-		| Zutaten      | Menge              | Z   | M   |
-		| :----------- | :----------------- | :-- | :-- |
-		| Haferflocken | 2 Esslöffel / 15 g | H   | 2   |
-		| Wasser       | 0.4 Liter / 400 g  | W   | 0.4 |
-		| Salz         | 1 Prise/n / 1 g    | S   | 1   |
+		| Zutaten      | Menge              | Z    | M    |
+		| :----------- | :----------------- | :--- | :--- |
+		| Haferflocken | 2 Esslöffel / 15 g | H    | 2    |
+		| Wasser       | 0.4 Liter / 400 g  | W    | 0.4  |
+		| Salz         | 1 Prise/n / 1 g    | S    | 1    |
 		`);
 		strictEqual(concat(input), expected);
 	});
@@ -133,11 +133,11 @@ suite('Extension Test Suite', () => {
 		| S   |1   |		
 		`);
 		const expected = clean(`
-		| Zutaten      | Menge              | Z   | M   |
-		| :----------- | :----------------- | :-- | :-- |
-		| Haferflocken | 2 Esslöffel / 15 g | H   | 2   |
-		| Wasser       | 0.4 Liter / 400 g  | W   | 0.4 |
-		| Salz         | 1 Prise/n / 1 g    | S   | 1   |
+		| Zutaten      | Menge              | Z    | M    |
+		| :----------- | :----------------- | :--- | :--- |
+		| Haferflocken | 2 Esslöffel / 15 g | H    | 2    |
+		| Wasser       | 0.4 Liter / 400 g  | W    | 0.4  |
+		| Salz         | 1 Prise/n / 1 g    | S    | 1    |
 		`);
 		strictEqual(concat(input), expected);
 	});
