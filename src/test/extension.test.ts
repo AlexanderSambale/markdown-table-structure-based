@@ -2,7 +2,7 @@ import { strictEqual } from 'assert';
 
 // You can import and use all API from the 'vscode' module
 // as well as import your extension to test it
-import { clean, concat, create } from '../utils';
+import { clean, concat, concatReverse, create } from '../utils';
 import { formatTable } from '../vscode-markdown/utils_extern';
 // import * as myExtension from '../../extension';
 
@@ -218,5 +218,81 @@ suite('Extension Test Suite', () => {
 		| S    | 1    |              |                    |      |      |              |                    |
 		`);
 		strictEqual(concat(input), expected);
+	});
+
+	test('Concat reverse 4 tables with different number of rows other ordering', () => {
+		const input = clean(`
+		| Z   | M   |
+		| :-- | :-- |
+		| H   | 2   |
+		| W   | 0.4 |
+		| S   | 1   |
+		| S   | 1   |
+		| S   | 1   |
+		
+		| Zutaten      | Menge              |
+		| :----------- | :----------------- |
+		| Haferflocken | 2 Esslöffel / 15 g |
+		| Wasser       | 0.4 Liter / 400 g  |
+		| Salz         | 1 Prise/n / 1 g    |
+
+		| Z   | M   |
+		| :-- | :-- |
+		| H   | 2   |
+
+
+		| Zutaten      | Menge              |
+		| :----------- | :----------------- |
+		| Haferflocken | 2 Esslöffel / 15 g |
+		| Wasser       | 0.4 Liter / 400 g  |
+
+		`);
+		const expected = clean(`
+		| Zutaten      | Menge              | Z    | M    | Zutaten      | Menge              | Z    | M    |
+		| :----------- | :----------------- | :--- | :--- | :----------- | :----------------- | :--- | :--- |
+		| Haferflocken | 2 Esslöffel / 15 g | H    | 2    | Haferflocken | 2 Esslöffel / 15 g | H    | 2    |
+		| Wasser       | 0.4 Liter / 400 g  |      |      | Wasser       | 0.4 Liter / 400 g  | W    | 0.4  |
+		|              |                    |      |      | Salz         | 1 Prise/n / 1 g    | S    | 1    |
+		|              |                    |      |      |              |                    | S    | 1    |
+		|              |                    |      |      |              |                    | S    | 1    |
+		`);
+		strictEqual(concatReverse(input), expected);
+	});
+
+	test('Concat reverse 4 tables with different number of rows other ordering', () => {
+		const input = clean(`
+		| Zutaten      | Menge              |
+		| :----------- | :----------------- |
+		| Haferflocken | 2 Esslöffel / 15 g |
+		| Wasser       | 0.4 Liter / 400 g  |
+
+		| Z   | M   |
+		| :-- | :-- |
+		| H   | 2   |
+
+		| Zutaten      | Menge              |
+		| :----------- | :----------------- |
+		| Haferflocken | 2 Esslöffel / 15 g |
+		| Wasser       | 0.4 Liter / 400 g  |
+		| Salz         | 1 Prise/n / 1 g    |
+
+		| Z   | M   |
+		| :-- | :-- |
+		| H   | 2   |
+		| W   | 0.4 |
+		| S   | 1   |
+		| S   | 1   |
+		| S   | 1   |
+		`);
+		const expected = clean(`
+		| Z    | M    | Zutaten      | Menge              | Z    | M    | Zutaten      | Menge              |
+		| :--- | :--- | :----------- | :----------------- | :--- | :--- | :----------- | :----------------- |
+		| H    | 2    | Haferflocken | 2 Esslöffel / 15 g | H    | 2    | Haferflocken | 2 Esslöffel / 15 g |
+		| W    | 0.4  | Wasser       | 0.4 Liter / 400 g  |      |      | Wasser       | 0.4 Liter / 400 g  |
+		| S    | 1    | Salz         | 1 Prise/n / 1 g    |      |      |              |                    |
+		| S    | 1    |              |                    |      |      |              |                    |
+		| S    | 1    |              |                    |      |      |              |                    |
+		`);
+		strictEqual(concatReverse(input), expected);
 	});
 });
