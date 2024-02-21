@@ -31,7 +31,7 @@ export function formatTable(input: string , options: FormattingOptions = { tabSi
 
   const delimiterRowIndex = 1;
   // const delimiterRowNoPadding = configManager.get('tableFormatter.delimiterRowNoPadding');
-  const delimiterRowNoPadding = true;
+  const delimiterRowNoPadding = false;
   const indentation = getTableIndentation(text, options);
 
   const rowsNoIndentPattern = new RegExp(/^\s*(\S.*)$/gum);
