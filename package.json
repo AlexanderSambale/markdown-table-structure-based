@@ -30,6 +30,12 @@
         "enablement": "editorLangId =~ /^markdown$|^rmd$|^quarto$|^mdx$/",
         "title": "concatenate tables",
         "category": "Markdown"
+      },
+      {
+        "command": "markdown-table-structure-based.concatReverse",
+        "enablement": "editorLangId =~ /^markdown$|^rmd$|^quarto$|^mdx$/",
+        "title": "concatenate tables in reverse order",
+        "category": "Markdown"
       }
     ]
   },
