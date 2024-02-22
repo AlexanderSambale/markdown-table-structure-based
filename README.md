@@ -1,16 +1,22 @@
-# markdown-table-structure-based README
-
-This is the README for your extension "markdown-table-structure-based". After writing up a brief description, we recommend including the following sections.
+# Easily create Markdown tables of already structured text
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+### Create a table reading rows first
 
-For example if there is an image subfolder under your extension project workspace:
+![create reading rows first](images/webp/createTableByRows.webp)
 
-\!\[feature X\]\(images/feature-x.png\)
+### Create a table reading columns first
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+![create reading columns first](images/webp/createTableByColumns.webp)
+
+### Concatenate tables
+
+![concatenate tables](images/webp/concatTables.webp)
+
+### Concatenate tables in reverse order
+
+![concatenate tables in reverse order](images/webp/concatTablesReverse.webp)
 
 ## Requirements
 
