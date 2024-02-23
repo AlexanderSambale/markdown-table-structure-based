@@ -10,6 +10,7 @@
     - [Prerequisites](#prerequisites)
     - [Commands](#commands)
   - [Known Issues](#known-issues)
+  - [Contribute](#contribute)
 
 ## Features
 
@@ -80,3 +81,8 @@ Press `F5` to open a new window with the extension loaded and all others disable
 - If you want empty table cells during `create` table, you should use a special string and replace it afterwards.
 - Only `:---` is supported at the moment
 - Linefeed is `\n` at the moment, no `\r\n` support.
+
+## Contribute
+
+Have a look at [Known Issues](#known-issues) or raise your own.
+This is my first public open source project, so I appreciate hints and help!
