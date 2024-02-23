@@ -9,10 +9,13 @@
     "vscode": "^1.86.0"
   },
   "categories": [
-    "Markdown",
-    "Tables",
+    "Programming Languages",
     "Formatters",
     "Other"
+  ],
+  "keywords": [
+    "Markdown",
+    "Tables"
   ],
   "repository": {
     "type": "git",
