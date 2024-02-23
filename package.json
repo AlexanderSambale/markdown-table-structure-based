@@ -3,7 +3,7 @@
   "displayName": "Markdown Table structure based",
   "description": "Copying tables to have them in markdown sometimes requires a lot of manual interaction. This extensions is to automate some of the cases.",
   "license": "MIT",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "icon": "images/icons/table.png",
   "publisher": "samxela",
   "engines": {
