@@ -6,6 +6,9 @@
     - [Create a table reading columns first](#create-a-table-reading-columns-first)
     - [Concatenate tables](#concatenate-tables)
     - [Concatenate tables in reverse order](#concatenate-tables-in-reverse-order)
+  - [Local development](#local-development)
+    - [Prerequisites](#prerequisites)
+    - [Commands](#commands)
   - [Known Issues](#known-issues)
 
 ## Features
@@ -47,6 +50,29 @@
 - You should see your tables merged into one, but in reversed order.
 
 ![concatenate tables in reverse order](images/webp/concatTablesReverse.webp)
+
+## Local development
+
+### Prerequisites
+
+- `yarn`
+- `vscode`
+
+### Commands
+
+Install needed packages
+
+```bash
+yarn install
+```
+
+Run tests
+
+```bash
+yarn run test
+```
+
+Press `F5` to open a new window with the extension loaded and all others disabled.
 
 ## Known Issues
 
