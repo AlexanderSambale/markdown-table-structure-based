@@ -116,3 +116,65 @@ export function concatReverse(tablesInput: string): string {
   .reverse();
   return concatenate(tables);
 }
+
+export function transpose(tableInput: string): string {
+  const rows = tableInput.trim().split(EOL);
+  
+  if (rows.length < 2) {
+    return tableInput;
+  }
+
+  const cells: string[][] = [];
+  
+  for (let rowIndex = 0; rowIndex < rows.length; rowIndex++) {
+    if (rowIndex === 1) {
+      continue;
+    }
+    let row = rows[rowIndex].trim();
+    if (row.startsWith('|')) {
+      row = row.substring(1);
+    }
+    if (row.endsWith('|')) {
+      row = row.substring(0, row.length - 1);
+    }
+    const rowCells = row.split('|').map(cell => cell.trim());
+    cells.push(rowCells);
+  }
+
+  if (cells.length === 0 || cells[0].length === 0) {
+    return tableInput;
+  }
+
+  const maxColumns = Math.max(...cells.map(row => row.length));
+  
+  const transposed: string[][] = [];
+  
+  for (let colIndex = 0; colIndex < maxColumns; colIndex++) {
+    const newRow: string[] = [];
+    for (let rowIndex = 0; rowIndex < cells.length; rowIndex++) {
+      if (colIndex < cells[rowIndex].length) {
+        newRow.push(cells[rowIndex][colIndex]);
+      } else {
+        newRow.push('');
+      }
+    }
+    transposed.push(newRow);
+  }
+
+  let resultRows: string[] = [];
+  for (let rowIndex = 0; rowIndex < transposed.length; rowIndex++) {
+    resultRows.push('|' + transposed[rowIndex].join('|') + '|');
+  }
+
+  let delimiterRow = '';
+  for (let colIndex = 0; colIndex < transposed[0].length; colIndex++) {
+    delimiterRow += '|:---';
+  }
+  delimiterRow += '|';
+
+  resultRows.splice(1, 0, delimiterRow);
+
+  let result = resultRows.join(EOL);
+  result = formatTable(result);
+  return result;
+}
