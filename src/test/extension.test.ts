@@ -2,7 +2,7 @@ import { strictEqual } from 'assert';
 
 // You can import and use all API from the 'vscode' module
 // as well as import your extension to test it
-import { clean, concat, concatReverse, create } from '../utils';
+import { clean, concat, concatReverse, create, transpose } from '../utils';
 import { formatTable } from '../vscode-markdown/utils_extern';
 // import * as myExtension from '../../extension';
 
@@ -294,5 +294,21 @@ suite('Extension Test Suite', () => {
 		| S    | 1    |              |                    |      |      |              |                    |
 		`);
 		strictEqual(concatReverse(input), expected);
+	});
+
+	test('Transpose table', () => {
+		const input = clean(`
+		| Arbeitszeit | Fertig in | Kalorien | Level   |
+		| :---------- | :-------- | :------- | :------ |
+		| 12 Min.     | 12 Min.   | 53       | Einfach |
+		`);
+		const expected = clean(`
+		| Arbeitszeit | 12 Min. |
+		| :---------- | :------ |
+		| Fertig in   | 12 Min. |
+		| Kalorien    | 53      |
+		| Level       | Einfach |
+		`);
+		strictEqual(transpose(input), expected);
 	});
 });
