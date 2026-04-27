@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import { concat, concatReverse, create } from './utils';
+import { concat, concatReverse, create, transpose } from './utils';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -13,7 +13,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 	let concatReverse = vscode.commands.registerCommand('markdown-table-structure-based.concatReverse', concatReverseFirst);
 
-	context.subscriptions.push(create, concat, concatReverse);
+	let transpose = vscode.commands.registerCommand('markdown-table-structure-based.transpose', transposeTable);
+
+	context.subscriptions.push(create, concat, concatReverse, transpose);
 }
 
 // This method is called when your extension is deactivated
@@ -95,5 +97,26 @@ function concatReverseFirst(){
 
 	editor.edit((editBuilder) => {
 		editBuilder.replace(selection, concatReverse(selectedText));
+	});
+}
+
+function transposeTable() {
+	const editor = vscode.window.activeTextEditor;
+	if (!editor) {
+		vscode.window.showErrorMessage('No active text editor.');
+		return;
+	}
+
+	const selection = editor.selection;
+	const selectedText = editor.document.getText(selection);
+
+	// Check if there's a selection
+	if (selection.isEmpty) {
+		vscode.window.showInformationMessage('Please select text to replace.');
+		return;
+	} 
+
+	editor.edit((editBuilder) => {
+		editBuilder.replace(selection, transpose(selectedText));
 	});
 }

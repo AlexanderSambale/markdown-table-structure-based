@@ -48,6 +48,12 @@
         "enablement": "editorLangId =~ /^markdown$|^rmd$|^quarto$|^mdx$/",
         "title": "concatenate tables in reverse order",
         "category": "Markdown"
+      },
+      {
+        "command": "markdown-table-structure-based.transpose",
+        "enablement": "editorLangId =~ /^markdown$|^rmd$|^quarto$|^mdx$/",
+        "title": "transpose table",
+        "category": "Markdown"
       }
     ]
   },
