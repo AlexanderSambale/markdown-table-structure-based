@@ -85,6 +85,12 @@ yarn run test
 
 Press `F5` to open a new window with the extension loaded and all others disabled.
 
+To generate Changelog
+
+```bash
+git-cliff -o CHANGELOG.md
+```
+
 ## Known Issues
 
 - Error management could be improved.
