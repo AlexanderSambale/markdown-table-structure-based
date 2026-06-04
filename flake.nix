@@ -22,6 +22,7 @@
           packages = with pkgs; [
             nodejs
             yarn
+            vsce
 
             # Common Electron runtime libraries
             alsa-lib
