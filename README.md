@@ -10,6 +10,7 @@
   - [Local development](#local-development)
     - [Prerequisites](#prerequisites)
     - [Commands](#commands)
+    - [prepublish](#prepublish)
   - [Known Issues](#known-issues)
   - [Contribute](#contribute)
 
@@ -89,6 +90,21 @@ To generate Changelog
 
 ```bash
 git-cliff -o CHANGELOG.md
+```
+
+### prepublish
+
+Make sure `vsce` is installed.
+For nixos this is
+
+```bash
+nix-shell -p vsce
+```
+
+Generate vsix for upload
+
+```bash
+vsce package
 ```
 
 ## Known Issues
