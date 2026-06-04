@@ -11,6 +11,7 @@
     - [Prerequisites](#prerequisites)
     - [Commands](#commands)
     - [prepublish](#prepublish)
+      - [Requirements](#requirements)
   - [Known Issues](#known-issues)
   - [Contribute](#contribute)
 
@@ -94,17 +95,19 @@ git-cliff -o CHANGELOG.md
 
 ### prepublish
 
-Make sure `vsce` is installed.
-For nixos this is
-
-```bash
-nix-shell -p vsce
-```
-
 Generate vsix for upload
 
 ```bash
 vsce package
+```
+
+#### Requirements
+
+Make sure `vsce` is installed.
+For nixos this use the provided flake with `direnv` or run
+
+```bash
+nix develop
 ```
 
 ## Known Issues
