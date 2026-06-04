@@ -19,3 +19,5 @@ flake.lock
 flake.nix
 **/test
 **/tests
+out
+esbuild.js

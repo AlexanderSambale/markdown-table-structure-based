@@ -28,7 +28,7 @@
     "onLanguage:rmd",
     "onLanguage:quarto"
   ],
-  "main": "./out/extension.js",
+  "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
@@ -58,10 +58,13 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "yarn run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "yarn run compile && yarn run lint",
+    "vscode:prepublish": "yarn run package",
+    "check-types": "tsc --noEmit",
+    "compile": "yarn run check-types && node esbuild.js",
+    "package": "yarn run check-types && node esbuild.js --production",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "pretest": "yarn run lint && yarn run compile",
     "lint": "eslint src --ext ts",
     "test": "vscode-test"
   },
@@ -73,6 +76,7 @@
     "@typescript-eslint/parser": "^6.19.1",
     "@vscode/test-cli": "^0.0.4",
     "@vscode/test-electron": "^2.3.9",
+    "esbuild": "^0.28.0",
     "eslint": "^8.56.0",
     "typescript": "^5.3.3"
   },
