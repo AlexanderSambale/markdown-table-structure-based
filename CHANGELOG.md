@@ -5,11 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.4.0] - 2026-04-27
+## [0.4.0] - 2026-06-04
 
 ### Changed
 
-- :bookmark: Increase version to 0.4.1
+- :wrench: Add cliff.toml
+- :memo: Rewrite CHANGELOG with git-cliff
+- :bookmark: Increase version to 0.4.0
 - :memo: Add command how to generate Changelog with git-cliff
 - :memo: Add transposeTable to README.md
 - :see_no_evil: Gitignore tsconfig.tsbuildinfo
