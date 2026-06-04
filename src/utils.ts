@@ -1,7 +1,5 @@
 import { formatTable } from "./vscode-markdown/utils_extern";
-
-const multipleNewLines = /\n\n+/;
-const EOL = '\n';
+import { multipleNewLines, EOL} from "./constants";
 
 export function create(input: string, columnsNumber: number): string {
   let table = '';
@@ -38,17 +36,6 @@ export function create(input: string, columnsNumber: number): string {
   table = rows.join(EOL);
   table = formatTable(table);
   return table; 
-}
-
-// Remove white spaces for tests
-export function clean(input: string): string {
-  let removed = '';
-  removed = input
-    .trim()
-    .split(EOL)
-    .map((line) => line.trimStart())
-    .join(EOL);
-  return removed;
 }
 
 /**
