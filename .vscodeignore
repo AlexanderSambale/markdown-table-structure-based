@@ -9,3 +9,13 @@ vsc-extension-quickstart.md
 **/*.map
 **/*.ts
 **/.vscode-test.*
+.kilocode
+.direnv
+.envrc
+AGENTS.md
+CHANGELOG.md
+cliff.toml
+flake.lock
+flake.nix
+**/test
+**/tests
