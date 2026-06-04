@@ -12,6 +12,7 @@
     - [Commands](#commands)
     - [prepublish](#prepublish)
       - [Requirements](#requirements)
+    - [Inspect extension size](#inspect-extension-size)
   - [Known Issues](#known-issues)
   - [Contribute](#contribute)
 
@@ -108,6 +109,12 @@ For nixos this use the provided flake with `direnv` or run
 
 ```bash
 nix develop
+```
+
+### Inspect extension size
+
+```bash
+vsce ls --tree
 ```
 
 ## Known Issues
