@@ -104,6 +104,37 @@ export function concatReverse(tablesInput: string): string {
   return concatenate(tables);
 }
 
+export function toLines(tableInput: string): string {
+  const rows = tableInput.trim().split(EOL);
+
+  if (rows.length < 2) {
+    return tableInput;
+  }
+
+  // Read cells row by row, skipping delimiter row (index 1)
+  const cells: string[] = [];
+
+  for (let rowIndex = 0; rowIndex < rows.length; rowIndex++) {
+    if (rowIndex === 1) {
+      continue; // skip delimiter row
+    }
+    let row = rows[rowIndex].trim();
+    if (row.startsWith('|')) {
+      row = row.substring(1);
+    }
+    if (row.endsWith('|')) {
+      row = row.substring(0, row.length - 1);
+    }
+    const rowCells = row.split('|').map(cell => cell.trim());
+    // Push cells in row order
+    for (const cell of rowCells) {
+      cells.push(cell);
+    }
+  }
+
+  return cells.join(EOL);
+}
+
 export function transpose(tableInput: string): string {
   const rows = tableInput.trim().split(EOL);
   
