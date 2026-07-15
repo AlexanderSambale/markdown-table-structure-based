@@ -60,6 +60,12 @@
         "enablement": "editorLangId =~ /^markdown$|^rmd$|^quarto$|^mdx$/",
         "title": "to lines (reverse of create)",
         "category": "Markdown"
+      },
+      {
+        "command": "markdown-table-structure-based.toColumns",
+        "enablement": "editorLangId =~ /^markdown$|^rmd$|^quarto$|^mdx$/",
+        "title": "to columns (reverse of create, column-major)",
+        "category": "Markdown"
       }
     ]
   },

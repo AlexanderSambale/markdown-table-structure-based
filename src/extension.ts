@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import { concat, concatReverse, create, toLines, transpose } from './utils';
+import { concat, concatReverse, create, toLines, toColumns, transpose } from './utils';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -17,7 +17,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 	let toLinesCmd = vscode.commands.registerCommand('markdown-table-structure-based.toLines', toLinesCommand);
 
-	context.subscriptions.push(create, concat, concatReverse, transpose, toLinesCmd);
+	let toColumnsCmd = vscode.commands.registerCommand('markdown-table-structure-based.toColumns', toColumnsCommand);
+
+	context.subscriptions.push(create, concat, concatReverse, transpose, toLinesCmd, toColumnsCmd);
 }
 
 // This method is called when your extension is deactivated
@@ -140,5 +142,25 @@ function toLinesCommand() {
 
 	editor.edit((editBuilder) => {
 		editBuilder.replace(selection, toLines(selectedText));
+	});
+}
+
+function toColumnsCommand() {
+	const editor = vscode.window.activeTextEditor;
+	if (!editor) {
+		vscode.window.showErrorMessage('No active text editor.');
+		return;
+	}
+
+	const selection = editor.selection;
+	const selectedText = editor.document.getText(selection);
+
+	if (selection.isEmpty) {
+		vscode.window.showInformationMessage('Please select text to replace.');
+		return;
+	}
+
+	editor.edit((editBuilder) => {
+		editBuilder.replace(selection, toColumns(selectedText));
 	});
 }
