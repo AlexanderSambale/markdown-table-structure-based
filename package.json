@@ -54,6 +54,12 @@
         "enablement": "editorLangId =~ /^markdown$|^rmd$|^quarto$|^mdx$/",
         "title": "transpose table",
         "category": "Markdown"
+      },
+      {
+        "command": "markdown-table-structure-based.toLines",
+        "enablement": "editorLangId =~ /^markdown$|^rmd$|^quarto$|^mdx$/",
+        "title": "to lines (reverse of create)",
+        "category": "Markdown"
       }
     ]
   },
