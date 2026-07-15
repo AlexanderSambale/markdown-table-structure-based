@@ -135,6 +135,62 @@ export function toLines(tableInput: string): string {
   return cells.join(EOL);
 }
 
+/**
+ * Converts a markdown table to column-major order.
+ * Columns are separated by empty lines, cells within a column by newlines.
+ * Round-trip with create(): create(toColumns(table), cols) → same table.
+ */
+export function toColumns(tableInput: string): string {
+  const rows = tableInput.trim().split(EOL);
+
+  if (rows.length < 2) {
+    return tableInput;
+  }
+
+  // Collect cells into a 2D array: rows[rowIndex][colIndex]
+  const matrix: string[][] = [];
+  let maxColumns = 0;
+
+  for (let rowIndex = 0; rowIndex < rows.length; rowIndex++) {
+    if (rowIndex === 1) {
+      continue; // skip delimiter row
+    }
+    let row = rows[rowIndex].trim();
+    if (row.startsWith('|')) {
+      row = row.substring(1);
+    }
+    if (row.endsWith('|')) {
+      row = row.substring(0, row.length - 1);
+    }
+    const rowCells = row.split('|').map(cell => cell.trim());
+    if (rowCells.length > 0 && rowCells[0] !== '') {
+      matrix.push(rowCells);
+      maxColumns = Math.max(maxColumns, rowCells.length);
+    }
+  }
+
+  if (matrix.length === 0 || maxColumns === 0) {
+    return tableInput;
+  }
+
+  // Build columns: each column is an array of cells (row-major to column-major)
+  const columns: string[][] = [];
+  for (let colIndex = 0; colIndex < maxColumns; colIndex++) {
+    const column: string[] = [];
+    for (const element of matrix) {
+      column.push(element[colIndex] ?? '');
+    }
+    columns.push(column);
+  }
+
+  // Join cells within each column with EOL, columns separated by double EOL
+  const result = columns
+    .map(column => column.join(EOL))
+    .join('\n\n');
+
+  return result;
+}
+
 export function transpose(tableInput: string): string {
   const rows = tableInput.trim().split(EOL);
   
