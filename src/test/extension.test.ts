@@ -2,7 +2,7 @@ import { strictEqual } from 'assert';
 
 // You can import and use all API from the 'vscode' module
 // as well as import your extension to test it
-import { concat, concatReverse, create, toLines, transpose } from '../utils';
+import { concat, concatReverse, create, toLines, toColumns, transpose } from '../utils';
 import { formatTable } from '../vscode-markdown/utils_extern';
 import { clean } from './utils';
 // import * as myExtension from '../../extension';
@@ -332,5 +332,48 @@ suite('Extension Test Suite', () => {
 		1 Prise/n / 1 g
 		`);
 		strictEqual(toLines(input), expected);
+	});
+
+	test('To columns from table (round-trip with create)', () => {
+		const input = clean(`
+		| Zutaten      | Menge              |
+		| :----------- | :----------------- |
+		| Haferflocken | 2 Esslöffel / 15 g |
+		| Wasser       | 0.4 Liter / 400 g  |
+		| Salz         | 1 Prise/n / 1 g    |
+		`);
+		const expected = clean(`
+		Zutaten
+		Haferflocken
+		Wasser
+		Salz
+		
+		Menge
+		2 Esslöffel / 15 g
+		0.4 Liter / 400 g
+		1 Prise/n / 1 g
+		`);
+		strictEqual(toColumns(input), expected);
+	});
+
+	test('Round-trip: create(toColumns(table), cols) == table', () => {
+		const original = clean(`
+		| Zutaten      | Menge              |
+		| :----------- | :----------------- |
+		| Haferflocken | 2 Esslöffel / 15 g |
+		| Wasser       | 0.4 Liter / 400 g  |
+		| Salz         | 1 Prise/n / 1 g    |
+		`);
+		const columnsOutput = toColumns(original);
+		const reconstructed = create(columnsOutput, 2);
+		// Table structure is preserved (delimiters may be normalized by formatTable)
+		const expected = clean(`
+		| Zutaten      | Menge              |
+		| :----------- | :----------------- |
+		| Haferflocken | 2 Esslöffel / 15 g |
+		| Wasser       | 0.4 Liter / 400 g  |
+		| Salz         | 1 Prise/n / 1 g    |
+		`);
+		strictEqual(reconstructed, expected);
 	});
 });
