@@ -70,12 +70,13 @@
     "package": "yarn run check-types && node esbuild.js --production",
     "watch:esbuild": "node esbuild.js --watch",
     "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
-    "pretest": "yarn run lint && yarn run compile",
+    "pretest": "yarn run lint && yarn run compile-tests",
     "lint": "eslint src --ext ts",
+    "compile-tests": "tsc -p . --outDir out",
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/mocha": "^10.0.6",
+    "@types/mocha": "^10.0.10",
     "@types/node": "18.x",
     "@types/vscode": "^1.86.0",
     "@typescript-eslint/eslint-plugin": "^6.19.1",
