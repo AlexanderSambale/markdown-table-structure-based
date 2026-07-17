@@ -79,7 +79,8 @@
     "pretest": "yarn run lint && yarn run compile-tests",
     "lint": "eslint src --ext ts",
     "compile-tests": "tsc -p . --outDir out",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "ui-test": "extest setup-and-run 'e2e/ui.test.ts' -m mocha.json --code_version 1.129.0 --code_settings settings.json --extensions_dir /tmp/test-resources/.test-extensions"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
@@ -91,7 +92,8 @@
     "@vscode/test-electron": "^2.3.9",
     "esbuild": "^0.28.0",
     "eslint": "^8.56.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vscode-extension-tester": "^8.23.0"
   },
   "dependencies": {
     "grapheme-splitter": "^1.0.4"
