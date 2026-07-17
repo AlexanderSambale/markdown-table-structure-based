@@ -7,6 +7,8 @@
     - [Concatenate tables](#concatenate-tables)
     - [Concatenate tables in reverse order](#concatenate-tables-in-reverse-order)
     - [Transpose table](#transpose-table)
+    - [To Lines (Reverse Table)](#to-lines-reverse-table)
+    - [To Columns (Column-Major Reverse)](#to-columns-column-major-reverse)
   - [Local development](#local-development)
     - [Prerequisites](#prerequisites)
     - [Commands](#commands)
@@ -64,6 +66,24 @@
 - You should see your tables transposed (columns are now rows and rows are now columns)
 
 ![transposeTable](images/webp/transposeTable.webp)
+
+### To Lines (Reverse Table)
+
+- Select your formatted markdown table
+- Use `Ctrl+Shift+P` to bring up the **Command Palette**
+- Type `Markdown: to lines (reverse table)` and confirm
+- You should see your table converted back to cell-first format (one cell per line, reading rows first)
+
+![toLines](images/webp/toLines.webp)
+
+### To Columns (Column-Major Reverse)
+
+- Select your formatted markdown table
+- Use `Ctrl+Shift+P` to bring up the **Command Palette**
+- Type `Markdown: to columns (reverse of create, column-major)` and confirm
+- You should see your table converted back to cell-first format (one cell per line, reading columns first)
+
+![toColumns](images/webp/toColumns.webp)
 
 ## Local development
 
