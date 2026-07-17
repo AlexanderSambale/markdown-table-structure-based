@@ -106,6 +106,18 @@ Run tests
 yarn run test
 ```
 
+For ui-tests and taking screenshots
+
+```bash
+yarn run ui-test
+```
+
+If there are missing `webp` animations after new functions. Adjust `check_and_create_images.sh` images and run
+
+```bash
+bash check_and_create_images.sh
+```
+
 Press `F5` to open a new window with the extension loaded and all others disabled.
 
 To generate Changelog
