@@ -3,16 +3,13 @@
 src/**
 .gitignore
 .yarnrc
-vsc-extension-quickstart.md
 **/tsconfig.json
 **/.eslintrc.json
 **/*.map
 **/*.ts
 **/.vscode-test.*
-.kilocode
 .direnv
 .envrc
-AGENTS.md
 CHANGELOG.md
 cliff.toml
 flake.lock
@@ -21,3 +18,6 @@ flake.nix
 **/tests
 out
 esbuild.js
+check_and_create_images.sh
+mocha.json
+settings.json
