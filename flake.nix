@@ -24,6 +24,7 @@
             yarn
             vsce
 
+            libwebp # for check_and_create_images.sh
             # Common Electron runtime libraries
             alsa-lib
             at-spi2-atk
