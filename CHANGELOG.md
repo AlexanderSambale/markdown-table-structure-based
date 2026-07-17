@@ -5,6 +5,36 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] - 2026-07-17
+
+### Changed
+
+- :bookmark: Increase version to 0.5.0
+- :see_no_evil: Ignore new settings files and check_and_create_images.sh for extension
+- :construction_worker: Update yarn.lock
+- :memo: Add commands and explanations for yarn run ui-test and check_and_create_images.sh
+- :memo: Add sections for toLines and toColumns
+- :heavy_plus_sign: Add libwebp for check_and_create_images.sh img2webp
+- :sparkles: Add check_and_create_images.sh for automating generating animations in README from screenshots
+- :wrench: Add and update configs for ui-tests
+- :heavy_plus_sign: Add vscode-extension-tester and ui-test script
+- :heavy_plus_sign: Add cups and unzip for vscode version 1.129.0
+- :fire: Remove unused comment with import in extension.test.ts
+- :sparkles: Register toColumns command
+- :sparkles: Add toColumns function
+- :fire: Remove kilocode and Agents documents
+- :sparkles: Register toLines command
+- :sparkles: Add toLines function
+- :technologist: Add esbuild and esbuild.js for minification and update configs
+- :memo: Update CHANGELOG
+
+### Fixed
+
+- ✅ Add ui tests which take screenshots
+- :white_check_mark: Add tests for toColumns
+- :technologist: Add compile-tests script and correct pretest script also update modules
+- :white_check_mark: Add test for toLines
+
 ## [0.4.1] - 2026-06-04
 
 ### Changed
@@ -154,6 +184,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initialize with code generator for extension
 
+[0.5.0]: https://github.com/AlexanderSambale/markdown-table-structure-based/compare/v0.4.1..v0.5.0
 [0.4.1]: https://github.com/AlexanderSambale/markdown-table-structure-based/compare/v0.4.0..v0.4.1
 [0.4.0]: https://github.com/AlexanderSambale/markdown-table-structure-based/compare/v0.3.1..v0.4.0
 [0.3.1]: https://github.com/AlexanderSambale/markdown-table-structure-based/compare/v0.3.0..v0.3.1
