@@ -5,7 +5,6 @@ import { strictEqual } from 'assert';
 import { concat, concatReverse, create, toLines, toColumns, transpose } from '../utils';
 import { formatTable } from '../vscode-markdown/utils_extern';
 import { clean } from './utils';
-// import * as myExtension from '../../extension';
 
 suite('Extension Test Suite', () => {
 	test('Create table where columns are already structured by newline with 4 columns', () => {
