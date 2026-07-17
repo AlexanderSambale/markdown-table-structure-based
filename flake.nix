@@ -30,6 +30,7 @@
             at-spi2-core
             atk
             cairo
+            cups
             dbus
             expat
             glib
@@ -49,6 +50,7 @@
             nss
             pango
             systemd
+            unzip
           ];
           LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath (
             with pkgs;
@@ -58,6 +60,7 @@
               at-spi2-core
               atk
               cairo
+              cups
               dbus
               expat
               glib
